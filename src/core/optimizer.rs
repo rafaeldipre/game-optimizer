@@ -98,6 +98,32 @@ impl Optimizer {
 
             tokio::time::sleep(tokio::time::Duration::from_millis(profile.delays.after_processes_ms)).await;
 
+            // Launch pre-launch programs
+            for pre in &profile.pre_launch_programs {
+                let mut cmd = std::process::Command::new(&pre.exe_path);
+                if let Some(ref args) = pre.args {
+                    if !args.is_empty() {
+                        cmd.args(args.split_whitespace());
+                    }
+                }
+                if let Some(ref wd) = pre.working_dir {
+                    cmd.current_dir(wd);
+                }
+                match cmd.spawn() {
+                    Ok(_) => {
+                        tracing::info!("[INFO] Pre-launch program '{}' started", pre.display_name);
+                        crate::logging::logger::add_to_buffer("INFO", &format!("Pre-launch: '{}' started", pre.display_name));
+                    }
+                    Err(e) => {
+                        tracing::warn!("[WARN] Failed to start pre-launch program '{}': {}", pre.display_name, e);
+                        crate::logging::logger::add_to_buffer("WARN", &format!("Pre-launch: failed to start '{}': {}", pre.display_name, e));
+                    }
+                }
+                if pre.wait_ms > 0 {
+                    tokio::time::sleep(tokio::time::Duration::from_millis(pre.wait_ms)).await;
+                }
+            }
+
             // Set GPU preference
             let exe_filename = Path::new(&profile.executable_path).file_name().and_then(|n| n.to_str()).unwrap_or("");
             if profile.gpu_preference != GpuPreference::Default {

@@ -140,6 +140,20 @@ impl Default for DelayConfig {
     }
 }
 
+/// A program that should be started before the game launches.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PreLaunchProgram {
+    pub display_name: String,
+    pub exe_path: String,
+    #[serde(default)]
+    pub args: Option<String>,
+    #[serde(default)]
+    pub working_dir: Option<String>,
+    /// Milliseconds to wait after launching this program before proceeding to the next step
+    #[serde(default)]
+    pub wait_ms: u64,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Profile {
     #[serde(default = "Uuid::new_v4")]
@@ -155,6 +169,8 @@ pub struct Profile {
     pub services: Vec<ServiceAction>,
     #[serde(default)]
     pub processes: Vec<ProcessAction>,
+    #[serde(default)]
+    pub pre_launch_programs: Vec<PreLaunchProgram>,
     #[serde(default)]
     pub scheduled_tasks: Vec<ScheduledTaskAction>,
     #[serde(default)]
@@ -188,6 +204,7 @@ impl Default for Profile {
             working_directory: None,
             services: Vec::new(),
             processes: Vec::new(),
+            pre_launch_programs: Vec::new(),
             scheduled_tasks: Vec::new(),
             process_priority: ProcessPriority::High,
             cpu_affinity: CpuAffinity::default(),

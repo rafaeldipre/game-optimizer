@@ -169,6 +169,25 @@ pub fn kill_processes_by_name(
     Ok(records)
 }
 
+/// Return a deduplicated, sorted list of (exe_name, first_pid) for all running
+/// processes. Suitable for display in the process picker UI.
+pub fn list_running_processes_snapshot() -> Vec<(String, u32)> {
+    let mut seen: std::collections::HashMap<String, (String, u32)> =
+        std::collections::HashMap::new();
+    for p in enumerate_processes() {
+        if p.pid == 0 || p.pid == 4 {
+            continue;
+        }
+        let key = p.exe_name.to_lowercase();
+        seen.entry(key).or_insert((p.exe_name, p.pid));
+    }
+    let mut list: Vec<(String, u32)> = seen
+        .into_values()
+        .collect();
+    list.sort_by(|a, b| a.0.to_lowercase().cmp(&b.0.to_lowercase()));
+    list
+}
+
 pub fn relaunch_process(record: &KilledProcessRecord) -> AppResult<()> {
     if let Some(ref _cmdline) = record.cmdline {
         let mut cmd = std::process::Command::new(&record.exe_name);

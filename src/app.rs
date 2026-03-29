@@ -20,6 +20,15 @@ pub struct AppState {
     pub is_editing_profile: bool,
     pub new_service_input: String,
     pub new_process_input: String,
+    // Process picker dialog state
+    pub show_process_picker: bool,
+    pub process_picker_list: Vec<(String, u32)>, // (exe_name, pid) deduplicated
+    pub process_picker_filter: String,
+    // Pre-launch program editor state (inline in profile editor)
+    pub new_prelaunch_exe: String,
+    pub new_prelaunch_name: String,
+    pub new_prelaunch_args: String,
+    pub new_prelaunch_wait_ms: u64,
 }
 
 #[derive(PartialEq, Clone, Copy)]
@@ -64,6 +73,13 @@ impl AppState {
             is_editing_profile: false,
             new_service_input: String::new(),
             new_process_input: String::new(),
+            show_process_picker: false,
+            process_picker_list: Vec::new(),
+            process_picker_filter: String::new(),
+            new_prelaunch_exe: String::new(),
+            new_prelaunch_name: String::new(),
+            new_prelaunch_args: String::new(),
+            new_prelaunch_wait_ms: 2000,
         }
     }
 
