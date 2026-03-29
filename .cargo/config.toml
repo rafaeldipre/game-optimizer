@@ -1,3 +1,8 @@
 [target.x86_64-pc-windows-gnu]
 linker = "C:\\tmp\\mingw-extracted\\mingw64\\bin\\gcc.exe"
 ar = "C:\\tmp\\mingw-extracted\\mingw64\\bin\\ar.exe"
+
+# Always compile in release mode — debug builds of egui/wgpu are
+# too slow to be usable (no optimizations, overflow checks everywhere).
+[profile.dev]
+opt-level = 2
