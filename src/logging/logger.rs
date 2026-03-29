@@ -1,5 +1,6 @@
 use once_cell::sync::Lazy;
 use std::sync::Mutex;
+use tracing_subscriber::EnvFilter;
 
 /// Ring buffer for UI log viewer (last 500 entries)
 pub static LOG_BUFFER: Lazy<Mutex<Vec<LogEntry>>> = Lazy::new(|| Mutex::new(Vec::new()));
@@ -47,14 +48,17 @@ pub fn init_logging(logs_dir: &str) -> anyhow::Result<()> {
 
     let file_appender = tracing_appender::rolling::daily(logs_dir, "game-optimizer");
     let (non_blocking, guard) = tracing_appender::non_blocking(file_appender);
-
-    // Leak the guard so it lives for the process lifetime
     Box::leak(Box::new(guard));
+
+    // Suppress all trace/debug/info from third-party crates (egui, wgpu, winit, tokio).
+    // Only our own crate logs at INFO+; everything else only logs ERRORs.
+    // This prevents thousands of low-level events per second from hitting disk.
+    let filter = EnvFilter::new("error,game_optimizer=info");
 
     tracing_subscriber::fmt()
         .with_writer(non_blocking)
         .with_ansi(false)
-        .with_max_level(tracing::Level::INFO)
+        .with_env_filter(filter)
         .init();
 
     Ok(())

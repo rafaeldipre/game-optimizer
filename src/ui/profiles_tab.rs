@@ -105,8 +105,15 @@ pub fn render(ui: &mut egui::Ui, state: &mut AppState) {
                     for i in 0..count {
                         let selected = state.selected_profile_index == Some(i);
                         let name = state.profiles[i].friendly_name.clone();
-                        if ui.selectable_label(selected, &name).clicked() {
+                        let resp = ui.selectable_label(selected, &name);
+                        if resp.clicked() {
                             state.selected_profile_index = Some(i);
+                        }
+                        // Double-click opens editor directly
+                        if resp.double_clicked() {
+                            state.selected_profile_index = Some(i);
+                            state.profile_edit_state = Some(state.profiles[i].clone());
+                            state.is_editing_profile = true;
                         }
                     }
                 });
@@ -297,7 +304,13 @@ pub fn render(ui: &mut egui::Ui, state: &mut AppState) {
                 });
             }
         } else {
-            ui.label("Select a profile or create a new one.");
+            ui.vertical_centered(|ui| {
+                ui.add_space(40.0);
+                ui.label(RichText::new("Select a profile from the list").strong());
+                ui.label(RichText::new("Single-click to select  •  Double-click to edit").weak());
+                ui.add_space(8.0);
+                ui.label(RichText::new("or click  New  to create one").weak());
+            });
         }
     });
 }
