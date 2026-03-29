@@ -18,8 +18,18 @@ impl GameOptimizerApp {
 
 impl eframe::App for GameOptimizerApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
-        // Request repaint every second to keep the session timer updated
-        ctx.request_repaint_after(std::time::Duration::from_secs(1));
+        // Only poll every second when a session is active (to update the timer).
+        // When idle, let eframe sleep until the next user event.
+        let phase = self.state.shared_session.lock().unwrap().phase.clone();
+        let is_active = matches!(
+            phase,
+            crate::core::model::SessionPhase::PreLaunch
+                | crate::core::model::SessionPhase::Running
+                | crate::core::model::SessionPhase::Restoring
+        );
+        if is_active {
+            ctx.request_repaint_after(std::time::Duration::from_secs(1));
+        }
 
         egui::TopBottomPanel::top("tab_bar").show(ctx, |ui| {
             ui.horizontal(|ui| {

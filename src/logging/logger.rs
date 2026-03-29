@@ -54,6 +54,7 @@ pub fn init_logging(logs_dir: &str) -> anyhow::Result<()> {
     tracing_subscriber::fmt()
         .with_writer(non_blocking)
         .with_ansi(false)
+        .with_max_level(tracing::Level::INFO)
         .init();
 
     Ok(())

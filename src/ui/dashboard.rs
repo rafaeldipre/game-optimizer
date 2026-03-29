@@ -1,4 +1,4 @@
-use crate::app::AppState;
+use crate::app::{AppState, Tab};
 use crate::core::model::SessionPhase;
 use crate::ui::widgets::{phase_color, status_badge};
 use chrono::Utc;
@@ -27,6 +27,15 @@ pub fn render(ui: &mut egui::Ui, state: &mut AppState) {
                 });
             if combo_sel != selected || state.selected_profile_index.is_none() {
                 state.selected_profile_index = Some(combo_sel);
+            }
+
+            // Quick-access button to edit selected profile
+            if ui.button("⚙ Configure").clicked() {
+                if let Some(idx) = state.selected_profile_index {
+                    state.profile_edit_state = Some(state.profiles[idx].clone());
+                    state.is_editing_profile = true;
+                    state.active_tab = Tab::Profiles;
+                }
             }
         }
     });
