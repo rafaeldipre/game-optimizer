@@ -1,0 +1,84 @@
+{
+  "id": "a1b2c3d4-0001-0001-0001-000000000001",
+  "name": "dcs-vr",
+  "friendly_name": "DCS World VR",
+  "executable_path": "C:\\Program Files\\Eagle Dynamics\\DCS World\\bin\\DCS.exe",
+  "launch_args": "--force_enable_VR",
+  "working_directory": "C:\\Program Files\\Eagle Dynamics\\DCS World",
+  "services": [
+    {
+      "service_name": "SysMain",
+      "display_name": "SysMain (SuperFetch)",
+      "stop_on_launch": true,
+      "was_running": null
+    },
+    {
+      "service_name": "DiagTrack",
+      "display_name": "Connected User Experiences and Telemetry",
+      "stop_on_launch": true,
+      "was_running": null
+    },
+    {
+      "service_name": "WSearch",
+      "display_name": "Windows Search",
+      "stop_on_launch": true,
+      "was_running": null
+    },
+    {
+      "service_name": "wuauserv",
+      "display_name": "Windows Update",
+      "stop_on_launch": true,
+      "was_running": null
+    }
+  ],
+  "processes": [
+    {
+      "exe_name": "SearchIndexer.exe",
+      "display_name": "Windows Search Indexer",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": false,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    },
+    {
+      "exe_name": "OneDrive.exe",
+      "display_name": "Microsoft OneDrive",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": true,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    },
+    {
+      "exe_name": "Discord.exe",
+      "display_name": "Discord",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": true,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    }
+  ],
+  "scheduled_tasks": [],
+  "process_priority": "High",
+  "cpu_affinity": {
+    "mask": null,
+    "description": "All cores"
+  },
+  "gpu_preference": "HighPerformance",
+  "memory_optimization": {
+    "trim_other_processes": false,
+    "target_min_working_set_bytes": null
+  },
+  "delays": {
+    "after_services_ms": 2000,
+    "after_processes_ms": 1000,
+    "after_launch_ms": 5000,
+    "relaunch_grace_secs": 60
+  },
+  "notes": "DCS World in VR mode. Stops SuperFetch, Windows Search and Update to free RAM and reduce stutter. Kills OneDrive and Discord to reduce background CPU usage.",
+  "created_at": "2026-03-28T00:00:00Z",
+  "updated_at": "2026-03-28T00:00:00Z",
+  "icon_path": null
+}

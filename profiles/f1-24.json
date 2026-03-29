@@ -1,0 +1,71 @@
+{
+  "id": "a1b2c3d4-0003-0003-0003-000000000003",
+  "name": "f1-24",
+  "friendly_name": "F1 24",
+  "executable_path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\F1 24\\F1_24.exe",
+  "launch_args": null,
+  "working_directory": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\F1 24",
+  "services": [
+    {
+      "service_name": "SysMain",
+      "display_name": "SysMain (SuperFetch)",
+      "stop_on_launch": true,
+      "was_running": null
+    },
+    {
+      "service_name": "WSearch",
+      "display_name": "Windows Search",
+      "stop_on_launch": true,
+      "was_running": null
+    }
+  ],
+  "processes": [
+    {
+      "exe_name": "OneDrive.exe",
+      "display_name": "Microsoft OneDrive",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": true,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    },
+    {
+      "exe_name": "Discord.exe",
+      "display_name": "Discord",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": true,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    },
+    {
+      "exe_name": "Spotify.exe",
+      "display_name": "Spotify",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": true,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    }
+  ],
+  "scheduled_tasks": [],
+  "process_priority": "High",
+  "cpu_affinity": {
+    "mask": null,
+    "description": "All cores"
+  },
+  "gpu_preference": "HighPerformance",
+  "memory_optimization": {
+    "trim_other_processes": false,
+    "target_min_working_set_bytes": null
+  },
+  "delays": {
+    "after_services_ms": 1000,
+    "after_processes_ms": 500,
+    "after_launch_ms": 4000
+  },
+  "notes": "F1 24 racing simulator. High priority for consistent frame timing. Stops SuperFetch and Search to minimize stutters during race replays.",
+  "created_at": "2026-03-28T00:00:00Z",
+  "updated_at": "2026-03-28T00:00:00Z",
+  "icon_path": null
+}

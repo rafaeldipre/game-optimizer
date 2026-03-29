@@ -1,0 +1,14 @@
+#[cfg(target_os = "windows")]
+pub mod elevation;
+#[cfg(target_os = "windows")]
+pub mod gpu;
+#[cfg(target_os = "windows")]
+pub mod memory;
+#[cfg(target_os = "windows")]
+pub mod monitor;
+#[cfg(target_os = "windows")]
+pub mod priority;
+#[cfg(target_os = "windows")]
+pub mod processes;
+#[cfg(target_os = "windows")]
+pub mod services;

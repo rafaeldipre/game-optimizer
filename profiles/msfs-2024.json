@@ -1,0 +1,83 @@
+{
+  "id": "a1b2c3d4-0002-0002-0002-000000000002",
+  "name": "msfs-2024",
+  "friendly_name": "Microsoft Flight Simulator 2024",
+  "executable_path": "C:\\Program Files\\WindowsApps\\Microsoft.FlightSimulator2024_1.0.0.0_x64__8wekyb3d8bbwe\\FlightSimulator2024.exe",
+  "launch_args": null,
+  "working_directory": null,
+  "services": [
+    {
+      "service_name": "SysMain",
+      "display_name": "SysMain (SuperFetch)",
+      "stop_on_launch": true,
+      "was_running": null
+    },
+    {
+      "service_name": "WSearch",
+      "display_name": "Windows Search",
+      "stop_on_launch": true,
+      "was_running": null
+    },
+    {
+      "service_name": "wuauserv",
+      "display_name": "Windows Update",
+      "stop_on_launch": true,
+      "was_running": null
+    },
+    {
+      "service_name": "XboxGipSvc",
+      "display_name": "Xbox Accessory Management",
+      "stop_on_launch": true,
+      "was_running": null
+    }
+  ],
+  "processes": [
+    {
+      "exe_name": "OneDrive.exe",
+      "display_name": "Microsoft OneDrive",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": true,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    },
+    {
+      "exe_name": "SearchIndexer.exe",
+      "display_name": "Windows Search Indexer",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": false,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    },
+    {
+      "exe_name": "Teams.exe",
+      "display_name": "Microsoft Teams",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": true,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    }
+  ],
+  "scheduled_tasks": [],
+  "process_priority": "AboveNormal",
+  "cpu_affinity": {
+    "mask": null,
+    "description": "All cores"
+  },
+  "gpu_preference": "HighPerformance",
+  "memory_optimization": {
+    "trim_other_processes": true,
+    "target_min_working_set_bytes": null
+  },
+  "delays": {
+    "after_services_ms": 2000,
+    "after_processes_ms": 1000,
+    "after_launch_ms": 8000
+  },
+  "notes": "MSFS 2024 profile. Uses AboveNormal priority to balance with the streaming system. High Performance GPU ensures dedicated GPU is always used.",
+  "created_at": "2026-03-28T00:00:00Z",
+  "updated_at": "2026-03-28T00:00:00Z",
+  "icon_path": null
+}

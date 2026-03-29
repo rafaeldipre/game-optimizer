@@ -1,0 +1,77 @@
+{
+  "id": "a1b2c3d4-0004-0004-0004-000000000004",
+  "name": "assetto-corsa",
+  "friendly_name": "Assetto Corsa Competizione",
+  "executable_path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Assetto Corsa Competizione\\AC2\\Binaries\\Win64\\AC2-Win64-Shipping.exe",
+  "launch_args": null,
+  "working_directory": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Assetto Corsa Competizione",
+  "services": [
+    {
+      "service_name": "SysMain",
+      "display_name": "SysMain (SuperFetch)",
+      "stop_on_launch": true,
+      "was_running": null
+    },
+    {
+      "service_name": "WSearch",
+      "display_name": "Windows Search",
+      "stop_on_launch": true,
+      "was_running": null
+    },
+    {
+      "service_name": "wuauserv",
+      "display_name": "Windows Update",
+      "stop_on_launch": true,
+      "was_running": null
+    }
+  ],
+  "processes": [
+    {
+      "exe_name": "OneDrive.exe",
+      "display_name": "Microsoft OneDrive",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": true,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    },
+    {
+      "exe_name": "Discord.exe",
+      "display_name": "Discord",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": true,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    },
+    {
+      "exe_name": "SearchIndexer.exe",
+      "display_name": "Windows Search Indexer",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": false,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    }
+  ],
+  "scheduled_tasks": [],
+  "process_priority": "High",
+  "cpu_affinity": {
+    "mask": null,
+    "description": "All cores"
+  },
+  "gpu_preference": "HighPerformance",
+  "memory_optimization": {
+    "trim_other_processes": true,
+    "target_min_working_set_bytes": null
+  },
+  "delays": {
+    "after_services_ms": 1500,
+    "after_processes_ms": 750,
+    "after_launch_ms": 5000
+  },
+  "notes": "Assetto Corsa Competizione (UE4). High priority + memory trim reduces VR stutters significantly. Trimming background processes frees RAM for the Unreal Engine.",
+  "created_at": "2026-03-28T00:00:00Z",
+  "updated_at": "2026-03-28T00:00:00Z",
+  "icon_path": null
+}

@@ -1,0 +1,77 @@
+{
+  "id": "a1b2c3d4-0005-0005-0005-000000000005",
+  "name": "star-wars-squadrons",
+  "friendly_name": "Star Wars Squadrons VR",
+  "executable_path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Star Wars Squadrons\\squadrons_gdx.exe",
+  "launch_args": null,
+  "working_directory": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Star Wars Squadrons",
+  "services": [
+    {
+      "service_name": "SysMain",
+      "display_name": "SysMain (SuperFetch)",
+      "stop_on_launch": true,
+      "was_running": null
+    },
+    {
+      "service_name": "WSearch",
+      "display_name": "Windows Search",
+      "stop_on_launch": true,
+      "was_running": null
+    },
+    {
+      "service_name": "wuauserv",
+      "display_name": "Windows Update",
+      "stop_on_launch": true,
+      "was_running": null
+    }
+  ],
+  "processes": [
+    {
+      "exe_name": "OneDrive.exe",
+      "display_name": "Microsoft OneDrive",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": true,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    },
+    {
+      "exe_name": "Discord.exe",
+      "display_name": "Discord",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": true,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    },
+    {
+      "exe_name": "EADesktop.exe",
+      "display_name": "EA Desktop",
+      "kill_on_launch": true,
+      "is_ignored": false,
+      "relaunch_after": false,
+      "captured_cmdline": null,
+      "captured_working_dir": null
+    }
+  ],
+  "scheduled_tasks": [],
+  "process_priority": "High",
+  "cpu_affinity": {
+    "mask": null,
+    "description": "All cores"
+  },
+  "gpu_preference": "HighPerformance",
+  "memory_optimization": {
+    "trim_other_processes": true,
+    "target_min_working_set_bytes": null
+  },
+  "delays": {
+    "after_services_ms": 1500,
+    "after_processes_ms": 750,
+    "after_launch_ms": 4000
+  },
+  "notes": "Star Wars: Squadrons in VR mode (Frostbite engine). Excellent native VR support. Killing EA Desktop after launch reduces background CPU. Memory trim helps with VR reprojection.",
+  "created_at": "2026-03-28T00:00:00Z",
+  "updated_at": "2026-03-28T00:00:00Z",
+  "icon_path": null
+}
